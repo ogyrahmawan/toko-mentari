@@ -27,7 +27,7 @@ const Sidebar: React.FC<Iprop> = ({sidebarStatus}) => {
           <li>all</li>
           {
             data.map((item:any) => (
-              <li>{item.name}</li>
+              <li key={item.id}>{item.name}</li>
             ))
           }
           <li>Add Category</li>

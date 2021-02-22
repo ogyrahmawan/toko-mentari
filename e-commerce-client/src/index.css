@@ -86,9 +86,13 @@ code {
 
 /* Dashboard Page */
 .dashboard-page {
-  /* padding: 10px; */
   min-height: 100vh;
-  /* background-color: #b67171; */
+}
+.content-section {
+  background-color: #f6f6f6;
+  padding: 20px;
+  width: 100%;
+  min-height: 94vh;
 }
 /* navbar */
 .navbar {
@@ -174,40 +178,37 @@ code {
   width: 100%;
   margin-left: 0%;
 }
-
-/* Drink Page */
-.drink-page {
-  padding: 20px 50px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  /* min-height: 100vh; */
+/* product card */
+.product-card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px
 }
-.card-product {
-  display: flex;
-  align-items: center;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  border-radius: 5px; /* 5px rounded corners */
-  padding: 20px;
-  width: 450px;
-  height: 200px;
-  margin: 20px;
-  background: #f9f9f9;
-}
-
 .card-image img {
-  border-radius: 5px 5px 0 0;
-  width: 150px;
-  height: 150px;
+  height: 200px;
+  border-radius: 20px;
 }
 .card-detail {
-  padding: 20px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  position: relative;
 }
 .card-detail h5 {
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: #5b5b5b;
+  font-size: larger;
+  font-weight: 900;
+  text-align: center;
+}
+.btn-delete {
+  position: absolute;
+  top: -15px;
+  right: 5px;
+}
+.btn-delete i {
+  font-size: larger;
 }
 
 .btn-add {
@@ -263,19 +264,7 @@ code {
     justify-content: center;
     /* min-height: 177.5vh; */
   }
-  .drink-page {
-    position: relative;
-    min-height: 170vh;
-    padding: 10px;
-    display: flex;
-    justify-content:flex-start ;
-    flex-direction: column;
-    align-items: center;
-  }
-  .card-product {
-    width: 500px;
-    margin: 10px;
-  }
+  
   .btn-add {
     position: absolute;
     bottom: 20px;

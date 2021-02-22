@@ -5,19 +5,23 @@ import firebase from '../firebase/config'
 import 'firebase/storage'
 import {fetchCategoriesAction} from '../redux/actions/CategoryActons'
 import {RootState} from '../redux/store'
-import { addProduct } from '../redux/actions/ProductAction'
+import {editProductAction } from '../redux/actions/ProductAction'
+import ProductCard from './ProductCard'
 
-
-const AddProduct:React.FC = () => {
+interface Iprop {
+  product: any
+}
+const EditProduct:React.FC<Iprop> = ({product}) => {
   const dispatch = useDispatch()
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [formInput, setFormInput] = useState({
-      image: '',
-      name: '',
-      price: 0,
-      categoryName: ''
+    id: product.id,
+    image: product.image_url,
+    name: product.name,
+    price: product.price,
+    categoryName: product.Category.name
   })
   const [productFile, setProductFile] = useState('')
   const {data} = useSelector((state: RootState) => state.category)
@@ -45,18 +49,16 @@ const AddProduct:React.FC = () => {
 
   const handleSubmit =  (e: any) => {
     e.preventDefault()
-    dispatch(addProduct(formInput))
+    dispatch(editProductAction(formInput))
     handleClose()
   }
   return (
     <>
-      <div className="btn-add" onClick={handleShow}>
-        +
-      </div>
+    <ProductCard product={product} handleShow={handleShow}></ProductCard>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>Add Product</Modal.Title>
+          <Modal.Title>Edit Product</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleSubmit}>
           <Modal.Body>
@@ -70,15 +72,15 @@ const AddProduct:React.FC = () => {
               </div>
               <div className="form-group">
                   <label>Name</label>
-                  <input onChange={handleChange} name="name" className="form-control" type="text"></input>
+                  <input onChange={handleChange} value={formInput.name} name="name" className="form-control" type="text"></input>
               </div>  
               <div className="form-group">
                   <label>Price</label>
-                  <input onChange={handleChange} name="price" className="form-control" type="number"></input>
+                  <input onChange={handleChange} value={formInput.price} name="price" className="form-control" type="number"></input>
               </div>
               <div className="form-group">
                   <label>Category</label>
-                  <select onChange={handleChange} className="form-control" name="categoryName">
+                  <select onChange={handleChange} value={formInput.categoryName} className="form-control" name="categoryName">
                     <option>select</option>
                     {
                       data.map((item:any) => (
@@ -102,4 +104,4 @@ const AddProduct:React.FC = () => {
   );
 }
   
-  export default AddProduct
+  export default EditProduct
