@@ -21,8 +21,7 @@ class CartRouter {
         try {
             let obj = {
                 UserId: req.userLoggedIn.id,
-                ProductId : +req.body.ProductId,
-                quantity: 1
+                ProductId : +req.body.ProductId
             }
             let productData = await Product.findOne({
                 where: {
@@ -62,7 +61,7 @@ class CartRouter {
                         },
                         returning: true
                     })
-                    console.log(cart, 'tessssssss')
+
                     res.status(200).json(cart[1][0])
                 } else {
                     throw({
@@ -74,40 +73,6 @@ class CartRouter {
         } catch (error) {
             next(error)
         }
-    }
-    static async editQuantity (req, res, next) {
-        try {
-            
-            let id = req.params.id
-            //cari datanya dulu
-            let newQuantity = req.body.quantity
-            let cartData = await Cart.findOne({
-                where: {
-                    id
-                },
-                include: {
-                    model: Product
-                }
-            })
-            console.log(cartData)
-            if(newQuantity <= cartData.Product.stock){
-                let data = await Cart.update({quantity: req.body.quantity}, {
-                    where: {
-                        id
-                    },
-                    returning: true
-                })
-                res.status(200).json(data[1][0])
-            } else {
-                throw({
-                    status: 400,
-                    message: 'Stock not available'
-                })
-            }
-        } catch (error) {
-            next(error)
-        }
-
     }
     static async deleteFromCart (req, res, next) {
         try {
