@@ -1,15 +1,11 @@
 import {useState, useEffect} from 'react'
 import firebase from '../firebase/config'
 import 'firebase/storage'
-import { useDispatch } from 'react-redux'
-import { deleteProductAction } from '../redux/actions/ProductAction'
 interface IProp {
   product?: any
-  handleShow?: () => void
 }
-const ProductCard:React.FC<IProp> = ({product, handleShow}) => {
+const ProductList:React.FC<IProp> = ({product}) => {
   const [productImage, setProductImage] = useState("")
-  const dispatch = useDispatch()
   useEffect(() => {
     if(product.image_url) {
       downloadImage(product.image_url )
@@ -23,11 +19,8 @@ const ProductCard:React.FC<IProp> = ({product, handleShow}) => {
       setProductImage(url)
     })
   }
-  const handleDelete = (id:number) => {
-    dispatch(deleteProductAction(id))
-  }
   return (
-    <div onClick={handleShow} className="product-card d-flex shadow">
+    <div className="card shadow">
       <div className="card-image">
         <img src={productImage} alt={`gambar ${product.id}`}></img>
       </div>
@@ -36,12 +29,10 @@ const ProductCard:React.FC<IProp> = ({product, handleShow}) => {
           <h5>{product.name}</h5>
           <p>{product.price}</p>
         </div>
-        <div onClick={() => handleDelete(product.id)} className="btn-delete">
-          <i className="fas fa-trash"></i>
-        </div>
+        <button>add to cart</button>
       </div>
     </div>
   )
 }
 
-export default ProductCard
+export default ProductList

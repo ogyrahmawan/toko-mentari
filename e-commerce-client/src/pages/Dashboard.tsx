@@ -12,7 +12,6 @@ import EditProduct from '../components/EditProduct'
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch()
   const {data, loading} = useSelector((state: RootState) => state.product)
-  console.log(data)
   const [sidebarStatus, setSidebarStatus] = useState(false)
   useEffect(() => {
     fetchProduct()
