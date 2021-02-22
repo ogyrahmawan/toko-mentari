@@ -1,3 +1,6 @@
+html {
+  min-height: 100vh;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f7f6e7;
 }
 
 code {
@@ -78,4 +82,203 @@ code {
   color: #f6f6f6;
   width: 100%;
   border-radius: 2;
+}
+
+/* Dashboard Page */
+.dashboard-page {
+  /* padding: 10px; */
+  min-height: 100vh;
+  /* background-color: #b67171; */
+}
+/* navbar */
+.navbar {
+  z-index: 2;
+  color: white;
+  height: 6vh;
+  background-color: darkred;
+
+  margin: 0;
+}
+.navbar h5 {
+  font-size: 2vh;
+}
+
+.hamburger-btn {
+  display: flex;
+  flex-direction: column; 
+  height: 30px;
+  display: none;
+}
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+
+.bar1change {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.4s;
+  /* background-color: #ec4646; */
+  transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+.bar2change {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin:  3px 0;
+  transition: 0.4s;
+  opacity: 0;
+}
+
+.bar3change {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.4s;
+  transform: rotate(45deg) translate(-6px, -3px) ;
+}
+
+/* sidebar */
+
+.sidebar-container {
+  background-color: black;
+  z-index: 1;
+  color: white;
+  width: 200px;
+  transition: 0.4s;
+  min-height: 94vh;
+}
+
+.sidebar-header {
+  padding: 20px;
+}
+
+.sidebar-body {
+  padding: 0;
+}
+.sidebar-body ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+  text-align: left;
+}
+.sidebar-body li {
+  list-style: none;
+  width: 100%;
+  margin-left: 0%;
+}
+
+/* Drink Page */
+.drink-page {
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* min-height: 100vh; */
+}
+.card-product {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  padding: 20px;
+  width: 450px;
+  height: 200px;
+  margin: 20px;
+  background: #f9f9f9;
+}
+
+.card-image img {
+  border-radius: 5px 5px 0 0;
+  width: 150px;
+  height: 150px;
+}
+.card-detail {
+  padding: 20px;
+}
+.card-detail h5 {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #5b5b5b;
+}
+
+.btn-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: darkred;
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  bottom: 40px;
+  right: 30px;
+  font-size: 50px;
+}
+/* 
+
+//tab
+@media screen and (max-width: 768px) {
+  
+} */
+
+/* phone */
+@media screen and (max-width: 768px) {
+  .navbar-dashboard {
+    min-width: 100vh;
+  }
+  .hamburger-btn {
+    display: inline;
+  }
+  .sidebar-container {
+    position: absolute;
+    left: -150vw;
+    min-height: 100vh;
+    width: 350px;
+  }
+  .sidebar-container-active {
+    transition: 0.5s;
+    position: absolute;
+    background-color: black;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    color: white;
+    width: 350px;
+    overflow-y: hidden;
+    min-height: 100vh;
+  }
+  .container-dashboard {
+    min-width: 100vh;
+    display: flex;
+    justify-content: center;
+    /* min-height: 177.5vh; */
+  }
+  .drink-page {
+    position: relative;
+    min-height: 170vh;
+    padding: 10px;
+    display: flex;
+    justify-content:flex-start ;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-product {
+    width: 500px;
+    margin: 10px;
+  }
+  .btn-add {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
 }

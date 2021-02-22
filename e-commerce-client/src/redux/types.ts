@@ -50,3 +50,15 @@ interface SetError {
 }
 
 export type UserAction = SetUserData | SetSuccess | SetError | LoadingAction
+
+//type Category
+export const SET_CATEGORIES = "SET_CATEGORIES"
+export interface CategoryInitialState {
+  data: any
+}
+interface setCategoriesAction {
+  type: typeof SET_CATEGORIES
+  payload: any
+}
+
+export type CategoriesAction = setCategoriesAction

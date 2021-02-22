@@ -1,5 +1,4 @@
-import { useState } from 'react'   
-import { useEffect } from 'react-bootstrap/node_modules/@types/react'
+import { useState, useEffect } from 'react'   
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { Login } from '../redux/actions/UserActions'
@@ -13,7 +12,11 @@ const LoginPage: React.FC = () => {
     password: ''
   })
   const {success, userData, error, loading} = useSelector((state:RootState) => state.user)
-  
+  useEffect(() => {
+    if(success) {
+      history.push('/dashboard')
+    }
+  }, [success, history])
   function handleChange (e: React.ChangeEvent<HTMLInputElement>) :void {
     setFormInput({...formInput, [e.target.name]: e.target.value})
   }
