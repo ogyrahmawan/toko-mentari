@@ -8,12 +8,17 @@ import { fetchCategoriesAction } from '../redux/actions/CategoryActons'
 import { fetchProductAction } from '../redux/actions/ProductAction'
 import ProductCard from '../components/ProductCard'
 import EditProduct from '../components/EditProduct'
+import { useHistory } from 'react-router-dom'
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const {data, loading} = useSelector((state: RootState) => state.product)
   const [sidebarStatus, setSidebarStatus] = useState(false)
   useEffect(() => {
+    if(localStorage.email !== 'admin@mail.com') {
+      history.push('/')
+    }
     fetchProduct()
   }, [])
   const handleSidebarStatus = () => {

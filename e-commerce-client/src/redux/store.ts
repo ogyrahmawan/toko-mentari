@@ -3,10 +3,12 @@ import productReducers from './reducers/ProductReducers'
 import thunk from 'redux-thunk'
 import userReducer from './reducers/UserReducers'
 import categoryReducer from './reducers/CategoriesReducers'
+import cartReducer from './reducers/CartReducers'
 const rootReducers = combineReducers({
   product: productReducers,
   user: userReducer,
-  category: categoryReducer
+  category: categoryReducer,
+  cart: cartReducer
 })
 
 const store = createStore(

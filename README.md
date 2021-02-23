@@ -12,10 +12,21 @@ Run `npm run serve` to start the client
 <!-- --- -->
 # URL
 ```
-Client URL : http://localhost:8080
+Client URL : http://localhost:3000
 Server URL : http://localhost:4000
 ```
 
+
+# Account
+```
+admin account
+email: admin@mail.com
+password: 1234
+
+testing OTP Phone Number
+phoneNumber : +628990277847
+otp: 123456
+```
 ### GET/products
 
 >get all task list

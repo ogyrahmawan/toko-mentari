@@ -1,10 +1,13 @@
 import {useState, useEffect} from 'react'
 import firebase from '../firebase/config'
 import 'firebase/storage'
+import { useDispatch } from 'react-redux'
+import { addProductToCartActions } from '../redux/actions/CartActions'
 interface IProp {
   product?: any
 }
 const ProductList:React.FC<IProp> = ({product}) => {
+  const dispatch = useDispatch()
   const [productImage, setProductImage] = useState("")
   useEffect(() => {
     if(product.image_url) {
@@ -19,6 +22,9 @@ const ProductList:React.FC<IProp> = ({product}) => {
       setProductImage(url)
     })
   }
+  const addToCart = (id: number) => {
+    dispatch(addProductToCartActions(id))
+  }
   return (
     <div className="card shadow">
       <div className="card-image">
@@ -29,7 +35,7 @@ const ProductList:React.FC<IProp> = ({product}) => {
           <h5>{product.name}</h5>
           <p>{product.price}</p>
         </div>
-        <button>add to cart</button>
+        <button onClick={() => addToCart(product.id)}>add to cart</button>
       </div>
     </div>
   )

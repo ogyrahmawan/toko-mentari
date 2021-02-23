@@ -29,16 +29,9 @@ class UserController {
                     message: `Invalid Account`
                 })
             } else {
-                if(data.role == 'admin'){
-                    if(compare(req.body.password, data.password)){
-                        const access_token = generateToken({id: data.id, email: data.email, role: data.role})
-                        res.status(200).json({ access_token })
-                    }
-                } else {
-                    throw({
-                        status: 400,
-                        message: `You dont have access`
-                    })
+                if(compare(req.body.password, data.password)){
+                    const access_token = generateToken({id: data.id, email: data.email, role: data.role})
+                    res.status(200).json({ access_token, email: data.email })
                 }
             }
         } catch (error) {

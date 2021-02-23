@@ -7,5 +7,7 @@ route.use(authenctication)
 route.get('/', CartRouter.getCart)
 route.post('/', CartRouter.addCart)
 route.delete('/:id', authorization, CartRouter.deleteFromCart)
+route.post('/checkout', CartRouter.makeTransaction)
+route.get('/transaction', CartRouter.getTransaction )
 
 module.exports = route

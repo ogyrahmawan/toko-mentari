@@ -62,3 +62,14 @@ interface setCategoriesAction {
 }
 
 export type CategoriesAction = setCategoriesAction
+
+//type cart
+export const SET_CART = "SET_CART"
+export interface  CartInitialState {
+  data: any
+}
+interface setCartAction {
+  type: typeof SET_CART,
+  payload:any
+}
+export type CartAction = setCartAction

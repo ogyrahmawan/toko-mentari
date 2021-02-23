@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import {fetchCategoriesAction} from '../redux/actions/CategoryActons'
 import {RootState} from '../redux/store'
 interface Iprop {
@@ -8,6 +9,7 @@ interface Iprop {
 
 const Sidebar: React.FC<Iprop> = ({sidebarStatus}) => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const {data} = useSelector((state: RootState) => state.category)
   useEffect(() => {
     fetchCategories()
@@ -15,6 +17,10 @@ const Sidebar: React.FC<Iprop> = ({sidebarStatus}) => {
 
   const fetchCategories = () => {
     dispatch(fetchCategoriesAction())
+  }
+  const logout = () => {
+    localStorage.clear()
+    history.push('/login')
   }
   return (
     <div className={sidebarStatus ? "sidebar-container-active": "sidebar-container"}>
@@ -33,6 +39,7 @@ const Sidebar: React.FC<Iprop> = ({sidebarStatus}) => {
           <li>Add Category</li>
           <li>Add Banner</li>
         </ul>
+        <button onClick={logout} className="btn btn-danger mt-5">Logout</button>
       </div>
     </div>
   ) 

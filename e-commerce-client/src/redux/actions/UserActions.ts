@@ -38,7 +38,8 @@ export const Login = (data: LoginViaEmailData) => (dispatch: any) => {
     .then(res =>{
       dispatch(setLoginSuccessAction())
       localStorage.setItem('access_token', res.data.access_token)
-      dispatch(setLoginUserDataAction(res.data))
+      localStorage.setItem('email', res.data.email)
+      dispatch(setLoginUserDataAction(res.data.email))
     })
     .catch(err => {
       dispatch(setLoginErrorAction())
